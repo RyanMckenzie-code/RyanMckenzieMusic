@@ -1,0 +1,147 @@
+:root {
+  --paper: #ffffff;
+  --ink: #090909;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Shadows Into Light", "Comic Sans MS", cursive;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.45) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.2;
+  animation: drift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(30px, 20px, 0); }
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 1rem;
+}
+
+.hamburger {
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  border-radius: 999px;
+  display: grid;
+  place-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu {
+  position: absolute;
+  top: 82px;
+  left: 1rem;
+  display: grid;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  transform: translateY(-15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  color: var(--ink);
+  font-size: 1.35rem;
+  text-decoration: none;
+}
+
+.hero,
+.panel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  line-height: 0.95;
+  margin: 0;
+}
+
+.tagline,
+.note,
+.panel p {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  margin: 0.4rem 0;
+}
+
+.silhouette-wrap {
+  margin: 1rem 0;
+  width: min(82vw, 430px);
+}
+
+.silhouette {
+  width: 100%;
+  height: auto;
+  filter: contrast(1.25);
+}
+
+h2 {
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  margin-bottom: 0.3rem;
+}
